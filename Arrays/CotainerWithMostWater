@@ -1,0 +1,33 @@
+// Problem: Container With Most Water
+// Platform: GeeksforGeeks
+// Approach: Two Pointer Technique - move the pointer with smaller height
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int maxWater(vector<int> &arr) {
+        
+        int left = 0;
+        int right = arr.size() - 1;
+        int maxi = 0;
+        
+        while(left < right)
+        {
+            int height = min(arr[left], arr[right]);
+            int width = right - left;
+            
+            maxi = max(maxi, height * width);
+            
+            if(arr[left] < arr[right])
+                left++;
+            else
+                right--;
+        }
+        
+        return maxi;
+    }
+};
