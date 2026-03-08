@@ -1,0 +1,25 @@
+// Problem: Factorial Trailing Zeroes
+// Platform: GeeksforGeeks
+// Approach: Count multiples of 5 in factorial (since 10 = 2 × 5 and 2s are abundant)
+// Time Complexity: O(log₅ n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// User function Template for C++
+
+class Solution {
+  public:
+    int trailingZeroes(int n) {
+        int count = 0;
+
+        while(n)
+        {
+            n = n / 5;
+            count += n;
+        }
+
+        return count;
+    }
+};
