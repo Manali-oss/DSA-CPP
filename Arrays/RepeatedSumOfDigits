@@ -1,0 +1,31 @@
+// Problem: Repeated Sum of Digits
+// Platform: GeeksforGeeks
+// Approach: Repeatedly compute the sum of digits until a single digit remains
+// Time Complexity: O(d * k) 
+// (d = number of digits, k = number of iterations until single digit)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int repeatedSumOfDigits(int N) {
+        int ans = 0;
+
+        while(N > 9)
+        {
+            ans = 0;
+
+            while(N)
+            {
+                ans += (N % 10);
+                N = N / 10;
+            }
+
+            N = ans;
+        }
+
+        return ans;
+    }
+};
