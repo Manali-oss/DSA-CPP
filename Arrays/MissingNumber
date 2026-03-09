@@ -1,0 +1,38 @@
+// Problem: Missing in Array
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Use sum formula to find missing number
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int missingNum(vector<int>& arr) {
+        int n = arr.size();
+        int sum = 0;
+
+        for(int i = 0; i < n; i++)
+        {
+            sum += arr[i];
+        }
+
+        int total = 0;
+
+        for(int i = 0; i <= n + 1; i++)
+        {
+            total += i;
+        }
+
+        if((total - sum) != 0)
+        {
+            return (total - sum);
+        }
+        else
+        {
+            return n + 1;
+        }
+    }
+};
