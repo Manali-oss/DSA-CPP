@@ -1,0 +1,42 @@
+// Problem: Floor Square Root
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Using for loop
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+// Approach 2: Binary Search on range [1, n-1] to find largest number whose square <= n
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int floorSqrt(int n) {
+        
+        int ans = 1;
+        int start = 1, end = n - 1;
+        
+        while(start <= end)
+        {
+            int mid = start + (end - start) / 2;
+            
+            if(n == mid * mid)
+            {
+                return mid;
+            }
+            else if(n > mid * mid)
+            {
+                ans = mid;
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+        
+        return ans;
+    }
+};
