@@ -1,0 +1,32 @@
+// Problem: Longest String in an Array
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Traverse the array and track the string with maximum length
+// Time Complexity: O(n * m)  (n = number of strings, m = average string length)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    string longest(vector<string>& arr) {
+        
+        int maxi = 0;
+        string ans;
+        
+        for(int i = 0; i < arr.size(); i++)
+        {
+            string first = arr[i];
+            int n = first.size();
+            
+            if(maxi < n)
+            {
+                maxi = n;
+                ans = first;
+            }
+        }
+        
+        return ans;
+    }
+};
