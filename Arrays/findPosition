@@ -1,0 +1,61 @@
+### 💻 Approach
+
+* Convert number to binary (stored in reverse)
+* Count number of `'1'` bits
+* Track index of set bit
+* If only one set bit → return position (1-based)
+* Otherwise → return `-1`
+
+  
+class Solution {
+public:
+    int findPosition(int n) {
+        string num = "";
+        int count = 0;
+        int index = -1;
+
+        // Convert to binary (reversed)
+        while (n) {
+            int rem = n % 2;
+            num += rem + '0';
+            n = n / 2;
+        }
+
+        // Count set bits
+        for (int i = 0; i < num.size(); i++) {
+            if (num[i] == '1') {
+                count++;
+                index = i;
+            }
+        }
+
+        // Return result
+        if (count == 1) {
+            return index + 1;
+        }
+
+        return -1;
+    }
+};
+```
+
+---
+
+### ⚡ Optimized Approach (Bit Manipulation)
+
+```cpp
+class Solution {
+public:
+    int findPosition(int n) {
+        // Check if only one set bit exists
+        if (n == 0 || (n & (n - 1)) != 0)
+            return -1;
+
+        int pos = 1;
+        while (n > 1) {
+            n >>= 1;
+            pos++;
+        }
+        return pos;
+    }
+};
